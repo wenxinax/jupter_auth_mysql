@@ -29,7 +29,7 @@ class UserManager(object):
 
 	username = None
 	password = None
-	db_url = "mysql+mysqlconnector://root:<root>@<192.168.199.182>:3306/<jupyter>"
+	db_url = "mysql+mysqlconnector://root:root@192.168.199.182:3306/jupyter"
 
 	def __init__(self, username, password):
 		self.username = username

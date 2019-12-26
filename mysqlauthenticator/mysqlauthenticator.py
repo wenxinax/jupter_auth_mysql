@@ -17,7 +17,7 @@ class MysqlAuthenticator(Authenticator):
 	@gen.coroutine
 	def authenticate(self, handler, data):
 
-		db_url = "mysql+mysqlconnector://root:<root>@<192.168.199.182>:3306/<jupyter>"
+		db_url = "mysql+mysqlconnector://root:root@192.168.199.182:3306/jupyter"
 		session = init(db_url)
 
 		username = data['username']
