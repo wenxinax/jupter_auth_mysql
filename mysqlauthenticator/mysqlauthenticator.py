@@ -24,8 +24,8 @@ class MysqlAuthenticator(Authenticator):
 		passwd = data['password']
 
 		try:
-			user = session.query(User).filter(User.username == username).one()
-			if user and user.check_password(passwd):
+			user = session.query(User).filter(User.username == username).filter(User.password == passwd).one()
+			if user is not None:
 				return user.username
 			else:
 				return None
