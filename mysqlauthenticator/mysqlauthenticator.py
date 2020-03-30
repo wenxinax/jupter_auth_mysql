@@ -6,6 +6,7 @@ from tornado import gen
 from mysqlauthenticator.DAO.base import init
 from mysqlauthenticator.DAO.user import User
 
+import os
 
 class MysqlAuthenticator(Authenticator):
 
@@ -16,8 +17,9 @@ class MysqlAuthenticator(Authenticator):
 
 	@gen.coroutine
 	def authenticate(self, handler, data):
-
-		db_url = "mysql+mysqlconnector://root:root@192.168.199.182:3306/jupyter"
+		mysql_host = os.environ["JUPYTER_MYSQL_SERVICE_HOST"]
+		mysql_port = os.environ["JUPYTER_MYSQL_SERVICE_PORT"]
+		db_url = "mysql+mysqlconnector://root:root@"+mysql_host+":"+mysql_port+"/jupyterhub"
 		session = init(db_url)
 
 		username = data['username']

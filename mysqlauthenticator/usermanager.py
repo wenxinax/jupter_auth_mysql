@@ -1,6 +1,7 @@
 # coding:utf-8
 
 import sys
+import os
 from sqlalchemy import Column, String, Integer 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -29,7 +30,9 @@ class UserManager(object):
 
 	username = None
 	password = None
-	db_url = "mysql+mysqlconnector://root:root@192.168.199.182:3306/jupyter"
+	mysql_host = os.environ["JUPYTER_MYSQL_SERVICE_HOST"]
+	mysql_port = os.environ["JUPYTER_MYSQL_SERVICE_PORT"]
+	db_url = "mysql+mysqlconnector://root:root@"+mysql_host+":"+mysql_port+"/jupyterhub"
 
 	def __init__(self, username, password):
 		self.username = username
