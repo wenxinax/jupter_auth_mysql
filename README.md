@@ -48,7 +48,7 @@ class MysqlAuthenticator(Authenticator):
 
  # 退出容器，把mysqlauthenticator包拷贝到pip3的下载目录
  # 注意路径，要不然import不进去。在容器里是/home/jovyan/.local/lib/python3.6/site-packages/
- docker cp /root/myspace/workspace/jupyter/jupter_auth_mysql/mysqlauthenticator 6db8b54b25b8:/home/jovyan/.local/lib/python3.6/site-packages/
+ docker cp /root/myspace/workspace/jupyter/jupter_auth_mysql/mysqlauthenticator 6db8b54b25b8:/usr/local/lib/python3.6/dist-packages/
 
 # 打tag 这里我传到自己搭建的docker仓库里去，方便其他机子pull
 docker tag 6db8b54b25b8 192.168.199.182:5000/jupyterhub/k8s-hub:v0.1.0
